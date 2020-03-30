@@ -1,0 +1,5 @@
+,label_hType_mix,label_num_intersect,label_bld_avg_age,label_emp_rat_num,label_LUM5_single,label_RNR_nres,label_mdist_smallparks,label_nig_rat_daily,label_nig_rat_daily3,label_mdist_nres_daily,label_num_community_places,label_num_community_places_poi,label_avg_block_area,label_sphi,label_enterprises_empl_size,label_pop_rat_num,label_emp_rat_pop,label_bld_rat_area,label_den_nres_daily,label_mdist_parks,label_den_nres_non-daily,label_mdist_railways,label_mdist_highways,label_mdist_water
+Accuracy,0.508,0.641,0.491,0.606,0.499,0.530,0.534,0.482,0.617,0.642,0.645,0.518,0.567,0.580,0.476,0.610,0.530,0.631,0.645,0.524,0.620,0.511,0.544,0.514
+Precision,0.508,0.624,0.488,0.613,0.502,0.534,0.534,0.479,0.618,0.631,0.645,0.515,0.564,0.573,0.474,0.604,0.528,0.631,0.645,0.523,0.613,0.512,0.552,0.524
+Recall,0.479,0.731,0.519,0.578,0.458,0.492,0.530,0.509,0.623,0.658,0.671,0.578,0.581,0.628,0.459,0.655,0.530,0.657,0.671,0.565,0.673,0.530,0.544,0.532
+AUC,0.478,0.658,0.512,0.644,0.561,0.567,0.544,0.492,0.680,0.686,0.716,0.501,0.631,0.577,0.484,0.657,0.537,0.706,0.716,0.509,0.662,0.500,0.603,0.511

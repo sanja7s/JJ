@@ -1,0 +1,5 @@
+,label_mdist_parks,label_mdist_railways,label_mdist_highways,label_mdist_water
+AUC,0.766,0.803,0.963,0.992
+Accuracy,0.711,0.708,0.902,0.920
+Precision,0.696,0.720,0.942,0.938
+Recall,0.776,0.702,0.858,0.908

@@ -1,0 +1,5 @@
+,label_bld_avg_age,label_enterprises_empl_size
+AUC,0.990,0.814
+Accuracy,0.968,0.717
+Precision,0.943,0.725
+Recall,1.000,0.740

@@ -1,0 +1,5 @@
+,label_LUM5_single,label_RNR_nres,label_mdist_smallparks,label_hType_mix,label_nig_rat_daily,label_mdist_nres_daily,label_num_community_places,label_num_community_places_poi
+AUC,0.627,0.665,0.756,0.740,0.714,0.921,0.933,0.683
+Accuracy,0.586,0.616,0.682,0.688,0.661,0.831,0.854,0.620
+Precision,0.580,0.611,0.681,0.679,0.668,0.857,0.865,0.636
+Recall,0.639,0.682,0.689,0.729,0.661,0.798,0.838,0.553
