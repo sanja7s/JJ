@@ -63,16 +63,18 @@ def batch_polygonize(in_dir, out_dir):
 
 
 # code for one selected image only
-#sat_img = "S2B_MSIL2A_20181024T102059_N0209_R065_T32TNR_20181024T171522_RGB_cropped/"
-#in_dir = "preprocessed/training/2A_imagelets/" + sat_img
-#out_dir = "preprocessed/training/2A_imagelet_shapes/" + sat_img
+sat_img = "S2A_MSIL2A_20181023T100051_N0209_R122_T32TQM_20181023T132111_RGB_32632/"
+in_dir = "preprocessed/training_images/2A_imagelets/" + sat_img
+out_dir = "preprocessed/training_images/2A_imagelet_shapes/" + sat_img
 
-root_in_dir = "preprocessed/training/2A_imagelets/"
+batch_polygonize(in_dir, out_dir) 
 
-for in_dir, subdirs, fl in os.walk(root_in_dir):
-	if in_dir == root_in_dir:
-		continue
-	in_dir = in_dir + "/"
-	out_dir = in_dir.replace("2A_imagelets", "2A_imagelet_shapes")
-	print (in_dir, out_dir)
-	batch_polygonize(in_dir, out_dir)
+# root_in_dir = "preprocessed/training_images/2A_imagelets/"
+
+# for in_dir, subdirs, fl in os.walk(root_in_dir):
+# 	if in_dir == root_in_dir:
+# 		continue
+# 	in_dir = in_dir + "/"
+# 	out_dir = in_dir.replace("2A_imagelets", "2A_imagelet_shapes")
+# 	print (in_dir, out_dir)
+# 	batch_polygonize(in_dir, out_dir)

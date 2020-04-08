@@ -9,6 +9,7 @@ def reproject_shape(input_path, to_crs = new_crs):
 
 	base = gp.read_file(input_path)
 	print (base.crs)
+	base.crs = base.crs
 	base = base.to_crs(to_crs)
 	# Output path
 	outfp = input_path.replace(".shp", "_" +CRS+".shp")

@@ -6,7 +6,8 @@ Created on Fri Mar 23 15:31:41 2018
 
 split input raster files to a set of imagelets each.
 input: in_dir
-output: out_dir (in which, a separate dir is created for each input image)
+output: out_dir (in which, a separate dir is 
+created for each input image)
 
 """
 import os
@@ -286,6 +287,6 @@ def batchSplit(inDir, outDir):
 
 
 
-inDir = "preprocessed/training/2A_source_raster"
+inDir = "preprocessed/training_images/2A_source_raster"
 outDir = "preprocessed/training/2A_imagelets/"
 batchSplit(inDir, outDir)

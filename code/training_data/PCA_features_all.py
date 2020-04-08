@@ -10,8 +10,8 @@ import numpy as np
 from sklearn.decomposition import PCA
 from sklearn.preprocessing import StandardScaler
 
-n_components = 32
-n_features = 2048
+n_components = 8
+# n_features = 2048
 
 network_type = "vgg16_4096"
 
@@ -23,26 +23,56 @@ elif network_type == "resnet50":
 	features_file = "Italy_6_cities_resnet50_layer4_flattened.json"
 elif network_type == "vgg16_4096":
 	features_file = "Italy_6_cities_vgg16_4096_flattened.json"
-
+elif network_type == "vgg16_2048":
+	features_file = "Italy_6_cities_vgg16_2048_flattened.json"
+elif network_type == "vgg16_2048_v1": # from stephen
+	features_file = "df_VGG16Featuress_2048_all1.csv"
+elif network_type == "vgg16_2048_v2":  # from stephen
+	features_file = "df_VGG16Featuress_2048_all2.csv"
+elif network_type == "vgg16_8192_v1": # from stephen
+	features_file = "df_VGG16Featuress_8192_all1.csv"
+elif network_type == "vgg16_8192_v2":  # from stephen
+	features_file = "df_VGG16Featuress_8192_all2.csv"
 
 def read_features():
-	data = pd.read_json(features_dir + features_file)
-	print (len(data.loc[0, 'feature']))
+	if network_type in ["vgg16_2048_v1", "vgg16_2048_v2", "vgg16_8192_v1", "vgg16_8192_v2"]:
+		data = pd.read_csv(features_dir + features_file)
+	else:
+		data = pd.read_json(features_dir + features_file)
+		print (len(data.loc[0, 'feature']))
 	return data
 
 
 
 resnet_features = read_features()
-n_features = len(resnet_features.loc[0, 'feature'])
+
+if network_type in ["vgg16_2048_v1", "vgg16_2048_v2", "vgg16_8192_v1", "vgg16_8192_v2"]:
+	n_features = len(resnet_features.columns)-1
+else:
+	n_features = len(resnet_features.loc[0, 'feature'])
+
+print (n_features)
+
+# # uncomment to test for Milano city only
+# ##########################################
+# print ("BEFORE ", len(resnet_features))
+# resnet_features = resnet_features[resnet_features["imageName"].str.contains("S2B_MSIL2A_20181024T102059_N0209_R065_T32TNR_20181024T171522")]
+# print ("AFTER ", len(resnet_features))
+# ##########################################
+
 resnet_features = resnet_features.set_index("imageName")
 
 rf = resnet_features.copy()
 
-rf[['f'+str(i) for i in range(n_features)]] = \
-	pd.DataFrame(rf.feature.values.tolist(), \
-	index= rf.index)
+if network_type in ["vgg16_2048_v1", "vgg16_2048_v2", "vgg16_8192_v1", "vgg16_8192_v2"]:
+	rf = rf.rename(columns={'f'+str(i):i for i in rf.columns if i != "imageName"})
+else:
+	rf[['f'+str(i) for i in range(n_features)]] = \
+		pd.DataFrame(rf.feature.values.tolist(), \
+		index= rf.index)
 
-rf = rf.drop(columns=['feature'])
+	rf = rf.drop(columns=['feature'])
+
 print (rf.head())
 
 standardized_features = StandardScaler().fit_transform(rf)
@@ -81,4 +111,7 @@ elif network_type == "resnet50":
 elif network_type == "vgg16_4096":
 	pca_df.to_csv(features_dir+"Italy_6_cities_resnet" + \
 		"_pca" + str(n_components) + "_vgg16_4096.csv")
+elif network_type == "vgg16_2048":
+	pca_df.to_csv(features_dir+"Italy_6_cities_resnet" + \
+		"_pca" + str(n_components) + "_vgg16_2048.csv")
 
