@@ -22,8 +22,14 @@ Coordinate system: Cartesian 2D CS. Axes: easting, northing (E,N). Orientations:
 
 1. code
   * training_data
+  * regression_prediction
+  * regression_data
   * general
+  * district_prediction
+  * district_data
+  * classification_prediction
   * prediction
+  * test
 2. data
   * boundaries
    * blocks
