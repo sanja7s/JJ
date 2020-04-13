@@ -15,15 +15,15 @@ output_dir = data_dir + "district_features/regression/"
 
 network_type = "vgg16_4096" 
 
-PCA_components = 8
+PCA_components = 64
 
 LABELING_METHOD = "threshold"
-AVERAGING_METHOD = "average"
+AVERAGING_METHOD = "kaist"
 
 features_columns = ["PCA"+str(i) for i in range(PCA_components)]
 geo_columns = ["centroid_x", "centroid_y"]
 
-USE_GEO = "ONLY_GEO"
+USE_GEO = "ALSO_GEO"
 if USE_GEO == "ALSO_GEO" and AVERAGING_METHOD != "kaist":
 	features_columns = features_columns + ["centroid_x", "centroid_y"]
 elif USE_GEO == "ONLY_GEO":

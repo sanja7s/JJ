@@ -11,13 +11,12 @@ prettify this code
 
 """
 
-import pandas as pd
-import json
+# import pandas as pd
 import geopandas as gp
-import numpy as np
 
 
-city_name = 'Firenze'
+
+city_name = 'Roma'
 
 city_pro_com_dict= {
 'Milano': 15146,
@@ -37,13 +36,26 @@ city_region = {
 'Firenze': 'toscana',	
 }
 
-base = gp.read_file("data/boundaries/districts/italy7s/"+\
-		city_region[city_name]+ ".shp")
+if city_name == 'Roma':
+	base = gp.read_file("data/boundaries/districts/italy7s/"+\
+		city_region[city_name]+ "_32632.shp")
+else:
+	base = gp.read_file("data/boundaries/districts/italy7s/"+\
+			city_region[city_name]+ ".shp")
+print(base.columns)
+print(base.head())
+print (base.crs)
+
 
 base = base[base["PRO_COM"] == city_pro_com_dict[city_name]]
 
-print(base.columns)
-print(base.head())
+# base.crs = {'init' :'epsg:32632'}
+# print (base.crs)
+# base = base.to_crs(base.crs)
+# print (base.crs)
+
+
+
 
 base.to_file("data/boundaries/districts/"+ city_name.lower()+\
 		"/" +city_name.lower()+ ".shp")

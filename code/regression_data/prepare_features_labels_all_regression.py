@@ -12,10 +12,9 @@ separate_features_dir = data_dir + "regression_features/features_separate_cities
 
 network_type = "vgg16_4096" 
 
-PCA_components = 8
+PCA_components = 12
 
-SMALL_VALUE = 0.00001
-
+SMALL_VALUE = 0.00009
 label_columns = ["hType_mix", "num_intersect", "bld_avg_age", "emp_rat_num",\
 				"LUM5_single",	"RNR_nres", "mdist_smallparks", "nig_rat_daily",\
 				"nig_rat_daily3", "mdist_nres_daily", "num_community_places", \

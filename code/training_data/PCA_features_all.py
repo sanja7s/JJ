@@ -10,7 +10,7 @@ import numpy as np
 from sklearn.decomposition import PCA
 from sklearn.preprocessing import StandardScaler
 
-n_components = 8
+n_components = 12
 # n_features = 2048
 
 network_type = "vgg16_4096"
