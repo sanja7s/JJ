@@ -31,22 +31,22 @@ xgboost
 ```
 
 ## Structure
-1. code
+code
   * [satellite_imagery](code/satellite_imagery)
   * [training_data](code/training_data)
   * [prediction](code/prediction)
   * [general](code/general)
   * [bing](code/bing)
 
-2. data
+data
   * [boundaries](data/boundaries)
   * [satellite_imagery](data/satellite_imagery)
   * [labels](data/labels)
 
-3. preprocessed
+preprocessed
   * [training_data](preprocessed/training_data)
 
-4. results
+results
   * XGBoost
 
 ## Usage
