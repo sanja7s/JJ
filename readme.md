@@ -60,19 +60,19 @@ results
 
 3. Download JJ labels from the repository of the paper [The Death and Life of Great Italian Cities: A Mobile Phone Data Perspective](https://github.com/denadai2/jacobs_urban_planning) and place under `data/labels/`.
 
-## Data preprocessing
+### Data preprocessing
 
-### Satellite Imagery (Imagelets)
+#### Satellite Imagery (Imagelets)
 1. Crop each satellite image to the area encompassing the city shapefile. This is done using `code/satellite_imagery/crop_raster_using_vector.py` and will save the cropped .geotiffs under `data/satellite_imagery/crop/2A_source_raster/`. 
 2. Produce training data (imagelets) by splitting the cropped satellite images into 64x64 px pieces. This is done in two steps: first, using `code/satellite_imagery/split_raster.py`, we create imagelets as .geotiffs, i.e., we preserve their spatial information, under `data/satellite_imagery/2A_imagelets/`. Second, we produce .rgb imagelets, i.e., those that are suitable for deep learning extractors, using `code/satellite_imagery/jpeg_from_tiff.py` -- this saves our results under `data/satellite_imagery/2A_imagelets_jpgs/`.
 
-### Deep Learning Features (Imagelets)
+#### Deep Learning Features (Imagelets)
 3. Produced .rgb imagery is parsed using VGG-16 extractor (TODO `code/training_data/feature_extractor/`) and resulting feature vectors are saved under `preprocessed/features/imagelets`. Since the size of feature from the extractor ranges from 2048 to 4096, we need to reduce them. The code using PCA to reduce this set of features to a predefined number of components (we experimented with number of features ranging from 8 to 64) is under `code/training_data/imagelets/PCA_features.py`
 
-### Deep Learning Features (Districts)
+#### Deep Learning Features (Districts)
 4. To obtain district-level features, the corresponding imagelet features are aggregated using the code under ... 
 
-### Labels
+#### Labels
 5. We need labels for both classification and regression for each imagelet/district. For districts, this is a more straightforward process: each district takes its regression label from the original label data under `data/labels/`, while its classification label is defined based on the quartile its regression label takes among all the district labels. 
 
 
