@@ -135,4 +135,4 @@ To add in Markdown format, use this code:
 
 ## License
 
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT) © Sanja Scepanovic
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
