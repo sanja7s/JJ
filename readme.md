@@ -51,29 +51,19 @@ results
 
 ## Usage
 
-TODO
-
-```sh
-$ standard-readme-spec
-# Prints out the standard-readme spec
-```
-
 ### Data collection
-1. Download satellite imagery around selected cities (Sentinel)
-  * preprocess the imagery into .geotiff with EPSG:32632 projection
-  * place .geotiff under `data/training_imagery/satellite/` 
+1. Download satellite imagery around selected cities (Sentinel-2) and preprocess the imagery into .geotiff with EPSG:32632 projection. Then place the .geotiff under `data/training_imagery/satellite/`.
 
-2. Download shapefiles with adminstrative borders of the selected cities
-  * place .shp files under `data/boundaries/districts/`. NOTE: We have found that it is best to download the whole regions from Italy in which the respective cities are and then extract each city's shape file. If you will do the same, the regional shapefiles are under `data/boundaries/districts/italy7s/` while the code to extract each city's shapefile is under `code/training_data/extract_city_shapes.py`. Upon running this code for each city, we have the respective shapefiles saved (in the proper projection) under `data/boundaries/districts/city`.
+2. Download shapefiles with adminstrative borders of the selected cities and place the .shp files under `data/boundaries/districts/`. NOTE: We have found that it is best to download the whole regions from Italy in which the respective cities are and then extract each city's shape file. If you will do the same, the regional shapefiles are under `data/boundaries/districts/italy7s/` while the code to extract each city's shapefile is under `code/general/extract_city_shapes.py`. Upon running this code for each city, we have the respective shapefiles saved (in the proper projection) under `data/boundaries/districts/city`.
 
-3. Download JJ labels from the repository https://github.com/denadai2/jacobs_urban_planning
-  * place under data/labels/
+3. Download JJ labels from the repository of the paper [The Death and Life of Great Italian Cities: A Mobile Phone Data Perspective](https://github.com/denadai2/jacobs_urban_planning) and place under `data/labels/`.
 
 ## Data preprocessing
+
 ### Training Imagery
 1. Crop each satellite image to the area encompassing the city shapefile. This is done using `code/satellite_imagery/crop_raster_using_vector.py` and will save the cropped .geotiffs under `data/satellite_imagery/crop/2A_source_raster/`. 
-2. Produce training data (imagelets) by splitting the cropped satellite images into 64x64 px pieces. This is done in several steps: first, using `code/satellite_imagery/split_raster.py`, we create imagelets as .geotiffs, i.e., preserving their spatial information, under `data/satellite_imagery/2A_imagelets/`. Second, we produce .rgb imagelets, i.e., those that are suitable for deep learning extractors, using `code/satellite_imagery/jpeg_from_tiff.py` -- this saves our results under `data/satellite_imagery/2A_imagelets_jpgs/`.
-3. Produced .rgb imagery is parsed using VGG-16 extractor (TODO we add code?) and resulting feature vectors are saved under `preprocessed/features/`. Since the feature sizes from the extractor are from 2048 to 4096, we need to reduce them. The code using PCA to reduce this set of features to a predefied number of components (we worked with 16,32) is under `code/training_data/PCA_features_all.py`
+2. Produce training data (imagelets) by splitting the cropped satellite images into 64x64 px pieces. This is done in two steps: first, using `code/satellite_imagery/split_raster.py`, we create imagelets as .geotiffs, i.e., we preserve their spatial information, under `data/satellite_imagery/2A_imagelets/`. Second, we produce .rgb imagelets, i.e., those that are suitable for deep learning extractors, using `code/satellite_imagery/jpeg_from_tiff.py` -- this saves our results under `data/satellite_imagery/2A_imagelets_jpgs/`.
+3. Produced .rgb imagery is parsed using VGG-16 extractor (TODO `code/training_data/feature_extractor/`) and resulting feature vectors are saved under `preprocessed/features/imagelets`. Since the size of feature from the extractor ranges from 2048 to 4096, we need to reduce them. The code using PCA to reduce this set of features to a predefined number of components (we experimented with number of features ranging from 8 to 64) is under `code/training_data/imagelets/PCA_features.py`
 
 ### Labels Imagery
 1. We need labels for each imagelet. There are several ways to approach the labelling. On the finest granularity level, each imagelet will get the label (for each of the JJ variables) based on the district in which the imagelet is located. On the lower granularity, we can merge the districts into classes (say quartiles or tertiles for each variable). In this case, we first disolve the shapefile with districts along such a defined class and then look for each imagelet, in which area (distrct group) it is found. The difference in resulting labels between these two approaches can come from how we define the imagelet being inside a district/group of districts. Due to the small distrcit sizes and low resolution of the Sentinel imagery we work with, the imagelets will rarely fall completely within a single district. Hence, we here again took two possible approaches. In the first: imagelet is defined to be within a district if it overlaps with more than the 50% (THRESHOLD=.5) of its area with the districts area. In the second approach, we simply assign the imagelet to the district with which it has the highest overlap. This allows to label more imagelets, as the strict criteria in the first case omits many imegelets that overlapped with several districts and with none of them with more than 50% of its size. 
