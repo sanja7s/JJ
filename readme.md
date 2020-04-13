@@ -1,14 +1,35 @@
 # Readme file for JJ SAT project
 
+[![standard-readme compliant](https://img.shields.io/badge/readme%20style-standard-brightgreen.svg?style=flat-square)](https://github.com/RichardLitt/standard-readme)
 
-## Requirements
-```bash
-pandas
-geopandas
-scikit-learn 
-xgboost
-```
+A standard style for README files
 
+Your README file is normally the first entry point to your code. It should tell people why they should use your module, how they can install it, and how they can use it. Standardizing how you write your README makes creating and maintaining your READMEs easier. Great documentation takes work!
+
+This repository contains:
+
+1. [The specification](spec.md) for how a standard README should look.
+2. A link to a linter you can use to keep your README maintained ([work in progress](https://github.com/RichardLitt/standard-readme/issues/5)).
+3. A link to [a generator](https://github.com/RichardLitt/generator-standard-readme) you can use to create standard READMEs.
+4. [A badge](#badge) to point to this spec.
+5. [Examples of standard READMEs](example-readmes/) - such as this file you are reading.
+
+Standard Readme is designed for open source libraries. Although it’s [historically](#background) made for Node and npm projects, it also applies to libraries in other languages and package managers.
+
+
+## Table of Contents
+
+- [Requirements](#background)
+- [Background](#requirements)
+- [Structure](#structure)
+- [Usage](#usage)
+	- [Generator](#generator)
+- [Badge](#badge)
+- [Maintainers](#maintainers)
+- [Contributing](#contributing)
+- [License](#license)
+
+## Background
 To make work easier, we choose to reproject all the data to
 WGS 84 / UTM zone 32N EPSG:32632, 
 as it is easier to work in meter units. 
@@ -18,8 +39,15 @@ EPSG:32632 info: Area of use: Between 6°E and 12°E, northern hemisphere betwee
 Coordinate system: Cartesian 2D CS. Axes: easting, northing (E,N). Orientations: east, north. UoM: m. http://pacificprojections.spc.int/32632
 
 
-## Structure
+## Requirements
+```bash
+pandas
+geopandas
+scikit-learn 
+xgboost
+```
 
+## Structure
 1. code
   * training_data
   * regression_prediction
@@ -49,8 +77,14 @@ Coordinate system: Cartesian 2D CS. Axes: easting, northing (E,N). Orientations:
 4. results
   * XGBoost
 
+## Usage
 
-## Procedure
+TODO
+
+```sh
+$ standard-readme-spec
+# Prints out the standard-readme spec
+```
 
 ### Data collection
 1. Download satellite imagery around selected cities (Sentinel)
@@ -73,13 +107,37 @@ Coordinate system: Cartesian 2D CS. Axes: easting, northing (E,N). Orientations:
 1. We need labels for each imagelet. There are several ways to approach the labelling. On the finest granularity level, each imagelet will get the label (for each of the JJ variables) based on the district in which the imagelet is located. On the lower granularity, we can merge the districts into classes (say quartiles or tertiles for each variable). In this case, we first disolve the shapefile with districts along such a defined class and then look for each imagelet, in which area (distrct group) it is found. The difference in resulting labels between these two approaches can come from how we define the imagelet being inside a district/group of districts. Due to the small distrcit sizes and low resolution of the Sentinel imagery we work with, the imagelets will rarely fall completely within a single district. Hence, we here again took two possible approaches. In the first: imagelet is defined to be within a district if it overlaps with more than the 50% (THRESHOLD=.5) of its area with the districts area. In the second approach, we simply assign the imagelet to the district with which it has the highest overlap. This allows to label more imagelets, as the strict criteria in the first case omits many imegelets that overlapped with several districts and with none of them with more than 50% of its size. 
 
 The steps to achieve these 4 possible types of labeling are:
-1) produce shapefiles from imagelets using `code/satellite_imagery/polygonize_raster.py`. This saves a new set of files under `preprocessed/satellite_imagery/2A_imagelet_shapes/`. We do this since it is easier to calculate the overlap with district sizes in the next step using such shapefiles than rasters of imagelets. 2) For a finer granularity labelling, we use `code/district_data/training_data_assign_labels_districts.py`, which assigns each imagelet('s shape) to the district. The LABELING_METHOD in this script can be set to "threshold" or "maximum" depedning on which of the two above discussed approaches to labelling we take. The "threshold" method is more strict. This script saves files with imagelet names and their district labels under `preprocessed/district_labels/`.
+1) produce shapefiles from imagelets using `code/satellite_imagery/polygonize_raster.py`. This saves a new set of files under `data/satellite_imagery/2A_imagelet_shapes/`. We do this since it is easier to calculate the overlap with district sizes in the next step using such shapefiles than rasters of imagelets. 2) For a finer granularity labelling, we use `code/district_data/training_data_assign_labels_districts.py`, which assigns each imagelet('s shape) to the district. The LABELING_METHOD in this script can be set to "threshold" or "maximum" depedning on which of the two above discussed approaches to labelling we take. The "threshold" method is more strict. This script saves files with imagelet names and their district labels under `preprocessed/district_labels/`.
 
 
 ### Prediction
 1. Predict image class for each of the JJ labels
 
+### Generator
+
+To use the generator, look at [generator-standard-readme](https://github.com/RichardLitt/generator-standard-readme). There is a global executable to run the generator in that package, aliased as `standard-readme`.
 
 
 
-## Licence
+To add in Markdown format, use this code:
+
+```
+[![standard-readme compliant](https://img.shields.io/badge/readme%20style-standard-brightgreen.svg?style=flat-square)](https://github.com/RichardLitt/standard-readme)
+```
+
+
+
+## Maintainers
+
+[@sanja7s](https://github.com/sanja7s).
+
+
+### Contributors
+
+This project exists thanks to all the people who contribute. 
+<a href="graphs/contributors"><img src="https://opencollective.com/standard-readme/contributors.svg?width=890&button=false" /></a>
+
+
+## License
+
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT) © Sanja Scepanovic
