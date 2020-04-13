@@ -40,7 +40,7 @@ Coordinate system: Cartesian 2D CS. Axes: easting, northing (E,N). Orientations:
 
 
 ## Requirements
-```bash
+```sh
 pandas
 geopandas
 scikit-learn 
@@ -129,13 +129,8 @@ To add in Markdown format, use this code:
 
 ## Maintainers
 
-[@sanja7s](https://github.com/sanja7s).
+[@sanja7s](https://github.com/sanja7s)
 
-
-### Contributors
-
-This project exists thanks to all the people who contribute. 
-<a href="graphs/contributors"><img src="https://opencollective.com/standard-readme/contributors.svg?width=890&button=false" /></a>
 
 
 ## License
