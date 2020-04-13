@@ -3,21 +3,11 @@
 ## Short Description
 This is a project code for the paper: Predicting Urban Vitality from Satelite imagery.
 
-This repository contains:
-
-1. [The specification](spec.md) for how a standard README should look.
-2. A link to a linter you can use to keep your README maintained ([work in progress](https://github.com/RichardLitt/standard-readme/issues/5)).
-3. A link to [a generator](https://github.com/RichardLitt/generator-standard-readme) you can use to create standard READMEs.
-4. [A badge](#badge) to point to this spec.
-5. [Examples of standard READMEs](example-readmes/) - such as this file you are reading.
-
-Standard Readme is designed for open source libraries. Although it’s [historically](#background) made for Node and npm projects, it also applies to libraries in other languages and package managers.
-
 
 ## Table of Contents
 
+- [Background](#background)
 - [Install](#install)
-- [Requirements](#background)
 - [Structure](#structure)
 - [Usage](#usage)
 	- [Generator](#generator)
@@ -27,15 +17,8 @@ Standard Readme is designed for open source libraries. Although it’s [historic
 - [License](#license)
 
 
-
 ## Background
-To make work easier, we choose to reproject all the data to
-WGS 84 / UTM zone 32N EPSG:32632, 
-as it is easier to work in meter units. 
-
-EPSG:32632 info: Area of use: Between 6°E and 12°E, northern hemisphere between equator and 84°N, onshore and offshore. Algeria. Austria. Cameroon. Denmark. Equatorial Guinea. France. Gabon. Germany. Italy. Libya. Liechtenstein. Monaco. Netherlands. Niger. Nigeria. Norway. Sao Tome and Principe. Svalbard. Sweden. Switzerland. Tunisia. Vatican City State.
-
-Coordinate system: Cartesian 2D CS. Axes: easting, northing (E,N). Orientations: east, north. UoM: m. http://pacificprojections.spc.int/32632
+All the geospatial data in this project are reprojected to [WGS 84 / UTM zone 32N EPSG:32632](http://pacificprojections.spc.int/32632), as it is the default for Italy and it works in meter units. 
 
 
 ## Install
