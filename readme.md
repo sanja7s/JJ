@@ -32,6 +32,7 @@ xgboost
 
 ## Structure
 1. code
+  * [satellite_imagery](code/satellite_imagery)
   * training_data
   * regression_prediction
   * regression_data
