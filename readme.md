@@ -93,17 +93,6 @@ The steps to achieve these 4 possible types of labeling are:
 ### Prediction
 1. Predict image class for each of the JJ labels
 
-### Generator
-
-To use the generator, look at [generator-standard-readme](https://github.com/RichardLitt/generator-standard-readme). There is a global executable to run the generator in that package, aliased as `standard-readme`.
-
-
-
-To add in Markdown format, use this code:
-
-```
-[![standard-readme compliant](https://img.shields.io/badge/readme%20style-standard-brightgreen.svg?style=flat-square)](https://github.com/RichardLitt/standard-readme)
-```
 
 
 
