@@ -38,26 +38,14 @@ xgboost
   * [general](code/general)
   * [bing](code/bing)
 
-
-
-
-  * test
 2. data
-  * boundaries
-   * blocks
-   * districts
-    * italy7s
-    * one for each city: bologna, milano, firenze, palermo, roma, torino
-  * training_data
-   * labels from JJ the project
-   * satellite
-  * JJ_urban_variables.xlsx
+  * [boundaries](data/boundaries)
+  * [satellite_imagery](data/satellite_imagery)
+  * [labels](data/labels)
+
 3. preprocessed
-  * training_images
-  * labels
-  * features
-  * high_low_examples
-  * fig
+  * [training_data](preprocessed/training_data)
+
 4. results
   * XGBoost
 
