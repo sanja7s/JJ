@@ -1,10 +1,7 @@
 # Readme file for JJ SAT project
 
-[![standard-readme compliant](https://img.shields.io/badge/readme%20style-standard-brightgreen.svg?style=flat-square)](https://github.com/RichardLitt/standard-readme)
-
-A standard style for README files
-
-Your README file is normally the first entry point to your code. It should tell people why they should use your module, how they can install it, and how they can use it. Standardizing how you write your README makes creating and maintaining your READMEs easier. Great documentation takes work!
+## Short Description
+This is a project code for the paper: Predicting Urban Vitality from Satelite imagery.
 
 This repository contains:
 
@@ -19,8 +16,8 @@ Standard Readme is designed for open source libraries. Although it’s [historic
 
 ## Table of Contents
 
+- [Install](#install)
 - [Requirements](#background)
-- [Background](#requirements)
 - [Structure](#structure)
 - [Usage](#usage)
 	- [Generator](#generator)
@@ -28,6 +25,8 @@ Standard Readme is designed for open source libraries. Although it’s [historic
 - [Maintainers](#maintainers)
 - [Contributing](#contributing)
 - [License](#license)
+
+
 
 ## Background
 To make work easier, we choose to reproject all the data to
@@ -39,7 +38,8 @@ EPSG:32632 info: Area of use: Between 6°E and 12°E, northern hemisphere betwee
 Coordinate system: Cartesian 2D CS. Axes: easting, northing (E,N). Orientations: east, north. UoM: m. http://pacificprojections.spc.int/32632
 
 
-## Requirements
+## Install
+Requirements for this project include:
 ```sh
 pandas
 geopandas
