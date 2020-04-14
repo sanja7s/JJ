@@ -287,6 +287,6 @@ def batchSplit(inDir, outDir):
 
 
 
-inDir = "preprocessed/training_images/2A_source_raster"
-outDir = "preprocessed/training/2A_imagelets/"
+inDir = "data/satellite_imagery/2A_source_raster"
+outDir = "data/satellite_imagery/2A_imagelets/"
 batchSplit(inDir, outDir)

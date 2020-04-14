@@ -17,7 +17,7 @@ import seaborn as sns
 
 CRS = '32632'
 
-cities = ['milano', 'palermo']
+cities = ['palermo', 'milano', 'roma', 'firenze', 'torino', 'bologna']
 
 # Prettier plotting with seaborn
 sns.set(font_scale=1.5)
@@ -78,13 +78,13 @@ def save_cropped_raster(path_out):
 			ff.write_band(i+1, src1)
 
 
-for city_name in ["torino"]:
+for city_name in cities:
 
 
 	sat_img = city_sat_img_dict[city_name]
 
 	# this is file path of the raster to be cropped
-	fp = r"data/training_data/satellite/Sentinel-2_2A/" + sat_img
+	fp = r"data/satellite_imagery/satellite/Sentinel-2_2A/" + sat_img
 
 	# this is file path of the vector for cropping extent
 	vfp = r"data/boundaries/districts/" + city_name + "/" + city_name + ".shp"
@@ -154,8 +154,8 @@ for city_name in ["torino"]:
 						   'count':raster.count})
 
 
-	img_out = sat_img.replace("_RGB.tif", "_RGB_CROPPED7s.tif")
-	path_out = r"preprocessed/training/2A_source_raster/" + img_out
+	img_out = sat_img.replace("_RGB.tif", "_RGB_CROPPED.tif")
+	path_out = r"data/satellite_imagery/2A_source_raster/" + img_out
 	save_cropped_raster(path_out)
 
 	raster.close()

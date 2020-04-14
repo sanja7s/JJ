@@ -37,10 +37,10 @@ city_region = {
 }
 
 if city_name == 'Roma':
-	base = gp.read_file("data/boundaries/districts/italy7s/"+\
+	base = gp.read_file("data/boundaries/blocks/italy7s/"+\
 		city_region[city_name]+ "_32632.shp")
 else:
-	base = gp.read_file("data/boundaries/districts/italy7s/"+\
+	base = gp.read_file("data/boundaries/blocks/italy7s/"+\
 			city_region[city_name]+ ".shp")
 print(base.columns)
 print(base.head())
@@ -57,7 +57,7 @@ base = base[base["PRO_COM"] == city_pro_com_dict[city_name]]
 
 
 
-base.to_file("data/boundaries/districts/"+ city_name.lower()+\
+base.to_file("data/boundaries/blocks/"+ city_name.lower()+\
 		"/" +city_name.lower()+ ".shp")
 	
 

@@ -44,11 +44,11 @@ def batch_transform(in_dir, out_dir):
 
 # only for one image
 # sat_img = "S2B_MSIL2A_20181024T102059_N0209_R065_T32TNR_20181024T171522_RGB_cropped/"
-# in_dir = "preprocessed/training_images/2A_imagelets/" + sat_img
-# out_dir = "preprocessed/training_images/2A_imagelet_jpgs/" + sat_img
+# in_dir = "data/satellite_imagery/2A_imagelets/" + sat_img
+# out_dir = "data/satellite_imagery/2A_imagelet_jpgs/" + sat_img
 
 # for all images
-root_in_dir = "preprocessed/training_images/2A_imagelets/"
+root_in_dir = "data/satellite_imagery/2A_imagelets/"
 
 for in_dir, subdirs, fl in os.walk(root_in_dir):
 	if in_dir == root_in_dir:

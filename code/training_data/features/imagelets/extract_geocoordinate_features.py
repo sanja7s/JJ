@@ -4,7 +4,7 @@
 @author: sanja7s
 
 Extract geocoordinates of the centroid of a raster by first
-Polygonizing the input raster and then getting the points.y
+Polygonizing the input raster and then getting the points x,y
 
 input: in_dir
 output: out_dir (in which, a separate dir is created for each input image)
@@ -82,12 +82,8 @@ def batch_extract(in_dir, out_dir):
 
 
 
-# code for one selected image only
-#sat_img = "S2B_MSIL2A_20181024T102059_N0209_R065_T32TNR_20181024T171522_RGB_cropped/"
-#in_dir = "preprocessed/training/2A_imagelets/" + sat_img
-#out_dir = "preprocessed/training/2A_imagelet_shapes/" + sat_img
-root_in_dir = "preprocessed/training_images/2A_imagelets/"
-out_dir = "preprocessed/features/features_all/"
+root_in_dir = "data/satellite_imagery/2A_imagelets/"
+out_dir = "preprocessed/training_data/features/imagelets/"
 all_res = []
 
 for in_dir, subdirs, fl in os.walk(root_in_dir):
