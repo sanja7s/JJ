@@ -72,21 +72,20 @@ results
 4. Moreover, we extract geo-coordinates of the centroid for each imagelet. This is done using `code/training_data/features/imagelets/extract_geocoordinate_features.py` and the result is saved also under `preprocessed/training_data/features/imagelets/`.
 
 #### Deep Learning and Geo Features (Districts)
-5. To obtain district-level features from imagelet features, we first need to find a link between imagelets and districts. This is done using `code/training_data/district_imagelets_link/district_labels_to_imagelets.py`. The resulting imagelet district labels are found under `preprocessed/training_data/district_imagelets_link`.
-
-Using this mapping, the corresponding imagelet features are aggregated using the code under `code/training_data/features/imagelets/districts/aggregate_features_districts.py`. 
+5. To obtain district-level features from imagelet features, we first need to find a link between imagelets and districts. This is done using `code/training_data/district_imagelets_link/district_labels_to_imagelets.py`. The resulting imagelet district labels are found under `preprocessed/training_data/district_imagelets_link`. Using this mapping, the corresponding imagelet features are aggregated using the code under `code/training_data/features/imagelets/districts/aggregate_features_districts.py`. 
 
 6. Moreover, in simiarity to geo-features for imagelets, we also extract centroid of each district using `code/training_data/features/districts/extract_centroids_features.py` and the results are saved under `preprocessed/training_data/features/districts/`. 
 
 #### Labels
-7. We need labels for both classification and regression for each imagelet/district. For districts, this is a more straightforward process: each district takes its regression label from the original label data under `data/labels/`, while its classification label is defined based on the quartile its regression label takes among all the district labels. Regression labels for districts are created by `code/training_data/features/districts/regression_district_labels.py`. 
+7. We need labels for both classification and regression for each imagelet/district. For districts, this is a more straightforward process: each district takes its regression label from the original label data under `data/labels/` (using `code/training_data/labels/districts/regression_district_labels.py`), while its classification label is defined based on the quartile/tertile its regression label takes among all the district labels (using `code/training_data/labels/districts/classification_district_labels.py`). The resulting labels are saved under `preprocessed/training_data/labels/districts.`. 
 
 
 8. For imagelets, the situation is a bit more complex. 
 
-	Each imagelet will get the *regression label* (for each of the JJ variables) based on the district in which the imagelet is located. There are two ways to define whether the imagelet is located in a district. Due to the small distrcit sizes and the low resolution of the Sentinel imagery we work with, the imagelets will rarely fall completely within a single district. Hence, thek two possible approaches are:
-		1. imagelet is located within a district with which it overlaps with more than the 50% (THRESHOLD=.5) of its area with the districts area,
-		2. imagelet is assigned to the district with which it has the highest overlap. This allows to label more imagelets, as the strict criteria in the first case omits many imegelets that overlapped with several districts and with none of them with more than 50% of its size. 
+	Each imagelet will get the *regression label* (for each of the JJ variables) based on the district in which the imagelet is located. There are two ways to define whether the imagelet is located in a district. Due to the small distrcit sizes and the low resolution of the Sentinel imagery we work with, the imagelets will rarely fall completely within a single district. Hence, the two possible approaches are:
+
+    1. imagelet is located within a district with which it overlaps with more than the 50% (THRESHOLD approach) of its area with the districts area,
+		2. imagelet is assigned to the district with which it has the highest overlap (MAXIMUM approach). This allows to label more imagelets, as the strict criteria in the first case omits many imegelets that overlapped with several districts and with none of them with more than 50% of its size. 
 
 
 	For *classificaton labels*, we merge the districts into classes (the quartiles for each variable) and then disolve the shapefile along such a defined class. We then look for each imagelet, in which area (distrct group) it is located, again having two possible defitions as above. 

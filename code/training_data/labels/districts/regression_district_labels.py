@@ -113,9 +113,9 @@ def create_for_one_city(city_name = 'Roma', normalize=False):
 	return label
 
 
-normalize = "Total"
+normalize = False
 res = pd.DataFrame()
-cities = ['Roma', 'Torino', 'Bologna', 'Firenze', 'Palermo']
+cities = ['Roma', 'Torino', 'Bologna', 'Firenze', 'Palermo', 'Milano']
 for city_name in cities:
 	df = create_for_one_city(city_name, normalize)
 	res = pd.concat([res, df])
