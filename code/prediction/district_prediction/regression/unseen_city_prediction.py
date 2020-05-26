@@ -13,7 +13,7 @@ features_dir = data_dir + "district_features/regression/"
 separate_features_dir = data_dir + "district_features/regression/"
 model_dir = "resources/districts/regression/" 
 
-PCA_components = 64n
+PCA_components = 64
 
 USE_GEO = "ALSO_GEO"
 if USE_GEO == "ALSO_GEO":

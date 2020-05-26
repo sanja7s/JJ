@@ -1,5 +1,0 @@
-,label_pop_rat_num,label_emp_rat_num,label_emp_rat_pop,label_bld_rat_area,label_den_nres_daily,label_den_nres_non-daily
-AUC,0.864,0.948,0.725,0.983,0.957,0.914
-Accuracy,0.760,0.831,0.650,0.900,0.840,0.816
-Precision,0.760,0.873,0.669,0.910,0.866,0.810
-Recall,0.740,0.843,0.679,0.900,0.824,0.805

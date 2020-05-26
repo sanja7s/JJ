@@ -1,5 +1,0 @@
-,label_avg_block_area,label_num_intersect,label_sphi
-AUC,0.936,0.943,0.861
-Accuracy,0.848,0.873,0.828
-Precision,0.858,0.877,0.841
-Recall,0.889,0.873,0.811

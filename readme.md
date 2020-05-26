@@ -72,7 +72,7 @@ results
 4. Moreover, we extract geo-coordinates of the centroid for each imagelet. This is done using `code/training_data/features/imagelets/extract_geocoordinate_features.py` and the result is saved also under `preprocessed/training_data/features/imagelets/`.
 
 #### Deep Learning and Geo Features (Districts)
-5. To obtain district-level features from imagelet features, we first need to find a link between imagelets and districts. This is done using `code/training_data/district_imagelets_link/district_labels_to_imagelets.py`. The resulting imagelet district labels are found under `preprocessed/training_data/district_imagelets_link`. Using this mapping, the corresponding imagelet features are aggregated using the code under `code/training_data/features/imagelets/districts/aggregate_features_districts.py`. 
+5. To obtain district-level features from imagelet features, we first need to find a link between imagelets and districts. This is done using `code/training_data/district_imagelets_link/district_labels_to_imagelets.py`. The resulting imagelet district labels are found under `preprocessed/training_data/district_imagelets_link`. Using this mapping, the corresponding imagelet features are aggregated using the code under `code/training_data/features/districts/aggregate_features_districts.py`. 
 
 6. Moreover, in simiarity to geo-features for imagelets, we also extract centroid of each district using `code/training_data/features/districts/extract_centroids_features.py` and the results are saved under `preprocessed/training_data/features/districts/`. 
 
@@ -96,7 +96,9 @@ The steps to achieve these 4 possible types of labeling are:
 
 
 ### Prediction
-1. Predict image class for each of the JJ labels
+1. Predict imagelet/district class for each of the JJ labels, including the vitality, either directly or indirectly.
+
+
 
 
 

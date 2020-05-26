@@ -1,4 +1,0 @@
-,label_hType_mix,label_num_intersect,label_bld_avg_age,label_emp_rat_num,label_LUM5_single,label_RNR_nres,label_mdist_smallparks,label_nig_rat_daily,label_nig_rat_daily3,label_mdist_nres_daily,label_num_community_places,label_num_community_places_poi,label_avg_block_area,label_sphi,label_enterprises_empl_size,label_emp_rat_pop,label_den_nres_daily,label_mdist_parks,label_den_nres_non-daily,label_mdist_railways,label_mdist_highways,label_mdist_water,label_activity_density
-MAE,0.191,0.125,0.165,0.134,0.198,0.234,0.177,0.163,0.137,0.141,0.152,0.183,0.153,0.169,0.192,0.172,0.179,0.195,0.136,0.203,0.197,0.242,0.141
-R2,-0.085,0.593,0.273,0.380,0.088,-0.109,-0.218,-0.240,-1.154,0.529,0.433,-0.199,0.265,0.041,-0.009,-0.096,0.401,-0.073,0.406,-0.096,-0.046,-0.614,0.427
-RMSE,0.246,0.156,0.206,0.169,0.245,0.281,0.220,0.214,0.212,0.172,0.187,0.229,0.194,0.208,0.239,0.216,0.216,0.239,0.180,0.250,0.244,0.291,0.177
